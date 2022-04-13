@@ -34,7 +34,7 @@ public class App
             String accessKey = cmd.getOptionValue("a");
             String secretKey = cmd.getOptionValue("s");
 
-        AmazonS3 s3client = S3Operations.s3initiator(accessKey,secretKey,regionAWS);
+            AmazonS3 s3client = S3Operations.s3initiator(accessKey,secretKey,regionAWS);
 
             S3Operations.listBuckets(s3client);
             S3Operations.createBucket(s3client, "buckettest01201");
@@ -42,8 +42,7 @@ public class App
             S3Operations.deleteBucket(s3client, "buckettest01201");
             S3Operations.listBuckets(s3client);
 
-        };
-
+        }
 
     }
         public static void printHelp(Options options) {
@@ -59,27 +58,3 @@ public class App
             pw.close();
         }
 }
-
-
-/*
-        just some examples I'll put in the help message apache cli
-        // listBuckets(s3client);
-        // ArrayList<String> bucketList = new ArrayList<String>();
-        // bucketList.add("javatest0004");
-        // bucketList.add("javatest0005");
-
-        // deleteObject(s3client,"javatest0004", "planet.png");
-        // listObjectsInBucket(s3client,"javatest0004");
-        // deleteObject(s3client,"javatest0005", "planet.png");
-        // deleteMultipleBuckets(s3client, bucketList);
-
-        // String bucketName = "javatest0004";
-        // createBucket(s3client, bucketName);
-        //listBuckets(s3client);
-
-        //uploadObject(s3client,bucketName,"planet.png","planet.png");
-        // listObjectsInBucket(s3client,bucketName);
-        // deleteMultipleBuckets(s3client, bucketList);
-
-
-        */
