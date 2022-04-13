@@ -1,5 +1,9 @@
 package com.scottmyers.app;
+/*
+S3Operations.java is an AWS S3 toolkit for buckets and objects.
+I've used cli arguments to avoid displaying authentication.
 
+ */
 import com.amazonaws.services.s3.AmazonS3;
 import org.apache.commons.cli.*;
 
@@ -30,6 +34,9 @@ public class App
         }
 
         if(cmd.hasOption("r") && cmd.hasOption("a") && cmd.hasOption("s")){
+
+            // It is possible to hardcode these values,
+            // but it's not advisable to share your access keys.
             String regionAWS =  cmd.getOptionValue("r");
             String accessKey = cmd.getOptionValue("a");
             String secretKey = cmd.getOptionValue("s");
@@ -43,7 +50,6 @@ public class App
             S3Operations.listBuckets(s3client);
 
         }
-
     }
         public static void printHelp(Options options) {
             HelpFormatter formatter = new HelpFormatter();
