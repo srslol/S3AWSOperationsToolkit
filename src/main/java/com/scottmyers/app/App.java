@@ -42,12 +42,15 @@ public class App
             String secretKey = cmd.getOptionValue("s");
 
             AmazonS3 s3client = S3Operations.s3initiator(accessKey,secretKey,regionAWS);
-
+            String bucketName = "buckettest010101";
+            String fileName = "planet.png";
             S3Operations.listBuckets(s3client);
-            S3Operations.createBucket(s3client, "buckettest01201");
+            S3Operations.createBucket(s3client, bucketName);
+            S3Operations.uploadObject(s3client, bucketName, fileName, fileName);
+            System.out.println(S3Operations.generateSignedURL(s3client,bucketName, fileName));
             S3Operations.listBuckets(s3client);
-            S3Operations.deleteBucket(s3client, "buckettest01201");
-            S3Operations.listBuckets(s3client);
+            // S3Operations.deleteBucket(s3client, bucketName);
+            // S3Operations.listBuckets(s3client);
 
         }
     }

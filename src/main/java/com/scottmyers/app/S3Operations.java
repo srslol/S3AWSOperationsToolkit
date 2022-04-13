@@ -214,6 +214,11 @@ public class S3Operations {
         }
     }
 
+    public static String generateSignedURL(AmazonS3 s3client, String bucketName, String objectName) {
+        GeneratePresignedUrlRequest request = new GeneratePresignedUrlRequest(bucketName, objectName);
+        return String.valueOf(s3client.generatePresignedUrl(request));
+    }
+
     public static void writeLog(String output) {
         System.out.println("Log --> " + output);
     }
